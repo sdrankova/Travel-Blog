@@ -1,0 +1,34 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/all-destinations.css' %}">
+{% endblock %}
+
+
+{% block site_content %}
+    <h1>All Destinations</h1>
+    <div class="mainContent">
+        <ul>
+            {% for dest in destinations %}
+                <li>
+                    <div class="relatedChild">
+                        <div class="relatefLeft">
+                            <img src="{{ dest.image_url }}" alt="photo of {{ dest.destination }}">
+                        </div>
+                        <div class="relatedRight">
+                            <h3>{{ dest.title }}</h3>
+                            <p>By: {{ dest.user }}</p>
+                            <p>{{ dest.description|truncatewords:30 }}</p>
+                            <a class="btn" href="{% url 'description and comment' dest.id %}">
+                                Read more
+                            </a>
+                        </div>
+                    </div>
+
+                </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+
+{% endblock %}

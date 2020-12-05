@@ -1,0 +1,50 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/description-destination.css' %}">
+{% endblock %}
+
+
+{% block site_content %}
+    <div class="imageSection">
+        <img src="{{ destination.image_url }}" alt="image of {{ destination.destination }}">
+    </div>
+
+    <div class="blogPostInfo">
+        <h1>{{ destination.title }}</h1>
+    </div>
+    <div class="mainContent">
+        <p>{{ destination.description }}</p>
+    </div>
+    <br>
+    <a class="btn" href="{% url 'like' destination.id %}">Like</a>
+    <p>Likes: {{ destination.like_set.count }}</p>
+
+    <br>
+    <br>
+    <a href="#"><p>By: {{ destination.user }}</p></a>
+
+
+    <div class="comment-form">
+        <h1>Leave a Reply</h1>
+        {% if destination.comment_set.count > 0 %}
+            {% for comment in destination.comment_set.all %}
+                <div class="all-comment">
+                    <p>{{ destination.user }}: {{ comment.text }}</p>
+                </div>
+            {% endfor %}
+
+        {% else %}
+            <h3>There are no comments for this destination. </h3>
+        {% endif %}
+
+
+        <form method="post" action="{% url 'description and comment' destination.pk %}">
+            {{ form }}
+            {% csrf_token %}
+            <button class="btn btn-primary mt-2" type="submit">Add comment</button>
+        </form>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+.mainContent img{
+    width: 90%;
+}
+
+.relatedChild {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.relatefLeft, .relatedRight{
+    flex: 1;
+}
