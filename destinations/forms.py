@@ -13,7 +13,7 @@ class CommentForm(forms.Form):
         )
     )
 
-class EditForm(forms.ModelForm):
+class EditCreateForm(forms.ModelForm):
     class Meta:
         model = Destination
         fields = '__all__'

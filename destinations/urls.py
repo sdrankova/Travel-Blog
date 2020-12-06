@@ -8,4 +8,5 @@ urlpatterns = [
     path('like/<int:pk>/', views.like_destination, name='like'),
     path('edit/<int:pk>/', views.edit_destination, name='edit'),
     path('delete/<int:pk>/', views.delete, name='delete'),
+    path('add/', views.add_destination, name='add'),
 ]
