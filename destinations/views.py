@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from destinations.forms import CommentForm
+from destinations.forms import CommentForm, EditForm
 from destinations.models import Destination, Like, Comment
 
 
@@ -41,6 +41,34 @@ def like_destination(request, pk):
     like.save()
     return redirect('description and comment', pk)
 
+def edit_destination(request, pk):
+    destination = Destination.objects.get(pk=pk)
+    if request.method == 'GET':
+        form = EditForm(instance=destination)
 
-def comment_destination(request, pk):
-    pass
+        context = {
+            'form': form,
+            'destination': destination,
+        }
+        return render(request, 'destinations/edit.html', context)
+    else:
+        form = EditForm(request.POST, instance=destination)
+        if form.is_valid():
+            form.save()
+            return redirect('description and comment', destination.pk)
+        context = {
+            'form': form,
+            'destination': destination,
+        }
+        return render(request, 'destinations/edit.html', context)
+
+def delete(request, pk):
+    destination = Destination.objects.get(pk=pk)
+    if request.method == 'GET':
+        context = {
+            'destination': destination,
+        }
+        return render(request, 'destinations/delete.html', context)
+    else:
+        destination.delete()
+        return redirect('destinations')

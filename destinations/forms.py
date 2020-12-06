@@ -1,5 +1,7 @@
 from django import forms
 
+from destinations.models import Destination
+
 
 class CommentForm(forms.Form):
     comment = forms.CharField(
@@ -10,3 +12,8 @@ class CommentForm(forms.Form):
                    }
         )
     )
+
+class EditForm(forms.ModelForm):
+    class Meta:
+        model = Destination
+        fields = '__all__'

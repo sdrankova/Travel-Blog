@@ -7,7 +7,9 @@ class Destination(models.Model):
     title = models.CharField(max_length=50, blank=False)
     destination = models.CharField(max_length=50, blank=False)
     description = models.TextField(blank=False)
-    image_url = models.URLField(blank=False)
+    image = models.ImageField(
+        upload_to='destinations',
+    )
 
     def __str__(self):
         return f'{self.title}'

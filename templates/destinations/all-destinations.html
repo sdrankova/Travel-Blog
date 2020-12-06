@@ -18,6 +18,7 @@
                         <div class="relatedRight">
                             <h3>{{ dest.title }}</h3>
                             <p>By: {{ dest.user }}</p>
+                            <p>From: {{ dest.destination }}</p>
                             <p>{{ dest.description|truncatewords:30 }}</p>
                             <a class="btn" href="{% url 'description and comment' dest.id %}">
                                 Read more

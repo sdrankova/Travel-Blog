@@ -1,0 +1,12 @@
+{% extends 'shared/base.html' %}
+
+
+{% block site_content %}
+    <h1>Edit destination</h1>
+    <form method="post" action="{% url 'edit' destination.pk %}">
+        {{ form }}
+        {% csrf_token %}
+
+        <button class="btn" type="submit">Edit</button>
+    </form>
+{% endblock %}
