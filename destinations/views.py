@@ -85,32 +85,3 @@ def delete(request, pk):
         return redirect('destinations')
 
 
-def add_destination(request):
-    destination = Destination()
-    if request.method == 'GET':
-        form = EditCreateForm(instance=destination)
-
-        context = {
-            'form': form,
-            'destination': destination,
-        }
-
-        return render(request, 'destinations/add.html', context)
-    else:
-        form = EditCreateForm(
-            request.POST,
-            request.FILES,
-            instance=destination,
-        )
-        if form.is_valid():
-            form.save()
-
-            return redirect('description and comment', destination.pk)
-
-        context = {
-            'form': form,
-            'destination': destination,
-        }
-
-        return render(request, 'destinations/edit.html', context)
-

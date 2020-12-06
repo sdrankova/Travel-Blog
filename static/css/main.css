@@ -88,11 +88,10 @@ nav ul li a {
 
 .rotate-text {
     transform: rotate(-270deg);
-    position: absolute;
+    position: fixed;
     right: -80px;
     bottom: 180px;
     text-transform: uppercase;
-
 }
 
 .rotate-text a {
