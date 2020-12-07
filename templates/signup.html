@@ -1,11 +1,18 @@
 {% extends 'shared/base.html' %}
+{% load static %}
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock %}
+
+
 {% block site_content %}
     <form method="post">
-    <h2>Sign up</h2>
-    {{ form.as_p }}
-    {% csrf_token %}
+        <h2>Sign up</h2>
+        {{ form.as_p }}
+        {% csrf_token %}
 
-    <button class="btn" type="submit">Join us</button>
-    <p>Have an account?<a href="{% url 'signup' %}" class="btn">Sign in</a>
+
+        <button class="btn" type="submit">Join us</button>
+        <p>Have an account?<a href="{% url 'signup' %}">Sign in</a>
     </form>
 {% endblock %}

@@ -1,0 +1,23 @@
+body {
+    max-width: 500px;
+    background: #f1f1f1;
+    position: absolute;
+    padding: 30px 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px #000000b3;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    display: block;
+    box-sizing: border-box;
+    margin-top: 20px;
+    padding: 4px;
+    width: 220px;
+    height: 32px;
+    border: none;
+    border-bottom: 1px solid #aaa;
+    font-family: sans-serif;
+    font-size: 15px;
+}
