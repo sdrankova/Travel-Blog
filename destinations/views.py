@@ -17,6 +17,9 @@ def description_and_comment_destination(request, pk):
         context = {
             'destination': destination,
             'form': CommentForm(),
+            'can_delete': request.user == destination.current_user.user,
+            'can_edit': request.user
+                        == destination.current_user.user,
         }
         return render(request, 'destinations/description-destination.html', context)
 

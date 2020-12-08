@@ -1,10 +1,9 @@
 body {
-    max-width: 500px;
+    max-width: 650px;
+    margin: 0 auto;
     background: #f1f1f1;
-    position: absolute;
     padding: 30px 40px;
-    box-sizing: border-box;
-    box-shadow: 0 0 20px #000000b3;
+
 }
 
 input[type="text"],

@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 
 from .forms import RegisterForm
@@ -68,3 +68,8 @@ def signup(request):
             'form': form,
         }
         return render(request, 'signup.html', context)
+
+
+def signout(request):
+    logout(request)
+    return redirect('home page')

@@ -17,7 +17,7 @@
                         </div>
                         <div class="relatedRight">
                             <h3>{{ dest.title }}</h3>
-                            <p>By: {{ dest.user }}</p>
+                            <p>By: {{ dest.current_user.user.username }}</p>
                             <p>From: {{ dest.destination }}</p>
                             <p>{{ dest.description|truncatewords:30 }}</p>
                             <a class="btn" href="{% url 'description and comment' dest.id %}">
