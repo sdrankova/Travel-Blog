@@ -19,8 +19,12 @@ def description_and_comment_destination(request, pk):
             'destination': destination,
             'form': CommentForm(),
             'can_delete': request.user == destination.current_user.user,
+
             'can_edit': request.user == destination.current_user.user,
             'already_liked': destination.like_set.filter(current_user_id=request.user.userprofile.id).exists(),
+
+            'can_edit': request.user
+                        == destination.current_user.user,
         }
         return render(request, 'destinations/description-destination.html', context)
 

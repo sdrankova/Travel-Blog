@@ -85,6 +85,7 @@ def signup(request):
         }
         return render(request, 'signup.html', context)
 
+
 def signout(request):
     logout(request)
     return redirect('home page')
