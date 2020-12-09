@@ -7,8 +7,8 @@ class LikeInLineAdmin(admin.TabularInline):
     model = Like
 
 class DestinationAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'destination')
-    list_filter = ('user','destination',)
+    list_display = ('id', 'destination')
+    list_filter = ('destination',)
     inlines = [
         LikeInLineAdmin,
     ]

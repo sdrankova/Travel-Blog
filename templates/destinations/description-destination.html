@@ -13,19 +13,30 @@
     <div class="blogPostInfo">
         <h1>{{ destination.title }}</h1>
     </div>
-    <a href="{% url 'edit' destination.pk %}" class="btn">Edit</a>
-    <a href="{% url 'delete' destination.pk %}" class="btn">Delete</a>
-
+    {% if can_edit %}
+        <a href="{% url 'edit' destination.pk %}" class="btn">Edit</a>
+    {% endif %}
+    {% if can_delete %}
+        <a href="{% url 'delete' destination.pk %}" class="btn">Delete</a>
+    {% endif %}
     <div class="mainContent">
         <p>{{ destination.description }}</p>
     </div>
     <br>
-    <a class="btn" href="{% url 'like' destination.id %}">Like</a>
+    {% if already_liked %}
+        <p>You already liked this destination. Do you want to see other visited destinations from
+            <a href="{% url 'profile' destination.current_user.user_id %}">
+                {{ destination.current_user.user.username }}</a></p>
+        <a class="btn" href="{% url 'like' destination.id %}">Unlike</a>
+
+    {% else %}
+        <a class="btn" href="{% url 'like' destination.id %}">Like</a>
+    {% endif %}
     <p>Likes: {{ destination.like_set.count }}</p>
 
     <br>
     <br>
-    <a href="#"><p>By: {{ destination.user }}</p></a>
+
 
 
     <div class="comment-form">
@@ -33,7 +44,7 @@
         {% if destination.comment_set.count > 0 %}
             {% for comment in destination.comment_set.all %}
                 <div class="all-comment">
-                    <p>{{ destination.user }}: {{ comment.text }}</p>
+                    <p>{{ destination.current_user.user.userprofile.user.username }}: {{ comment.text }}</p>
                 </div>
             {% endfor %}
 

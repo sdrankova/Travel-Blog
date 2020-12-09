@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from destinations.forms import CommentForm, EditCreateForm
@@ -10,13 +11,16 @@ def all_destinations(request):
     }
     return render(request, 'destinations/all-destinations.html', context)
 
-
+@login_required
 def description_and_comment_destination(request, pk):
     destination = Destination.objects.get(pk=pk)
     if request.method == 'GET':
         context = {
             'destination': destination,
             'form': CommentForm(),
+            'can_delete': request.user == destination.current_user.user,
+            'can_edit': request.user == destination.current_user.user,
+            'already_liked': destination.like_set.filter(current_user_id=request.user.userprofile.id).exists(),
         }
         return render(request, 'destinations/description-destination.html', context)
 
@@ -25,6 +29,7 @@ def description_and_comment_destination(request, pk):
         if form.is_valid():
             comment = Comment(text=form.cleaned_data['comment'])
             comment.destination = destination
+            comment.current_user = request.user.userprofile
             comment.save()
             return redirect('description and comment', pk)
         context = {
@@ -33,18 +38,23 @@ def description_and_comment_destination(request, pk):
         }
         return render(request, 'destinations/description-destination.html', context)
 
-
+@login_required
 def like_destination(request, pk):
-    destination = Destination.objects.get(pk=pk)
-    like = Like(test=str(pk))
-    like.destination = destination
-    like.save()
+    like = Like.objects.filter(current_user_id=request.user.userprofile.id, destination_id=pk).first()
+    if like:
+        like.delete()
+    else:
+        destination = Destination.objects.get(pk=pk)
+        like = Like(test=str(pk), current_user=request.user.userprofile)
+        like.destination = destination
+        like.save()
     return redirect('description and comment', pk)
 
-
+@login_required
 def edit_destination(request, pk):
     destination = Destination.objects.get(pk=pk)
-
+    if destination.current_user.user != request.user:
+        pass
     if request.method == 'GET':
         form = EditCreateForm(instance=destination)
 
@@ -72,9 +82,11 @@ def edit_destination(request, pk):
 
         return render(request, 'destinations/edit.html', context)
 
-
+@login_required
 def delete(request, pk):
     destination = Destination.objects.get(pk=pk)
+    if destination.current_user.user != request.user:
+        pass
     if request.method == 'GET':
         context = {
             'destination': destination,
@@ -83,5 +95,3 @@ def delete(request, pk):
     else:
         destination.delete()
         return redirect('destinations')
-
-
