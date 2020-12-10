@@ -13,17 +13,8 @@
     <div class="blogPostInfo">
         <h1>{{ destination.title }}</h1>
     </div>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-    {% if can_edit %}
-        <a href="{% url 'edit' destination.pk %}" class="btn">Edit</a>
-    {% endif %}
-    {% if can_delete %}
-        <a href="{% url 'delete' destination.pk %}" class="btn">Delete</a>
-    {% endif %}
-=======
->>>>>>> 073015d45822cb56eca0c256b1533325a3ccf916
+
+
     <div>
         {% if can_edit %}
             <a href="{% url 'edit' destination.pk %}" class="btn">Edit</a>
@@ -32,10 +23,6 @@
             <a href="{% url 'delete' destination.pk %}" class="btn">Delete</a>
         {% endif %}
     </div>
-<<<<<<< HEAD
-=======
->>>>>>> origin/master
->>>>>>> 073015d45822cb56eca0c256b1533325a3ccf916
     <div class="mainContent">
         <p>{{ destination.description }}</p>
     </div>
@@ -53,16 +40,7 @@
 
     <br>
     <br>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
     <a href="#"><p>By: {{ destination.current_user.user.username }}</p></a>
-=======
-=======
-    <a href="#"><p>By: {{ destination.current_user.user.username }}</p></a>
->>>>>>> origin/master
->>>>>>> 073015d45822cb56eca0c256b1533325a3ccf916
-
 
     <div class="comment-form">
         <h1>Leave a Reply</h1>

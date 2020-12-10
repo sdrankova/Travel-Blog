@@ -16,4 +16,4 @@ class CommentForm(forms.Form):
 class EditCreateForm(forms.ModelForm):
     class Meta:
         model = Destination
-        fields = '__all__'
+        fields = ('title', 'destination', 'description', 'image',)

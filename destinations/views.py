@@ -22,9 +22,6 @@ def description_and_comment_destination(request, pk):
 
             'can_edit': request.user == destination.current_user.user,
             'already_liked': destination.like_set.filter(current_user_id=request.user.userprofile.id).exists(),
-
-            'can_edit': request.user
-                        == destination.current_user.user,
         }
         return render(request, 'destinations/description-destination.html', context)
 
@@ -56,7 +53,7 @@ def like_destination(request, pk):
 
 @login_required
 def edit_destination(request, pk):
-    destination = Destination.objects.get(pk=pk)
+    destination = Destination.objects.get(pk=pk, current_user=request.user.userprofile)
     if destination.current_user.user != request.user:
         pass
     if request.method == 'GET':

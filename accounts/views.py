@@ -14,7 +14,7 @@ def home_page_logged_user(request):
 
 @login_required
 def add_destination(request):
-    destination = Destination()
+    destination = Destination(current_user=request.user.userprofile)
     if request.method == 'GET':
         form = EditCreateForm(instance=destination)
 
