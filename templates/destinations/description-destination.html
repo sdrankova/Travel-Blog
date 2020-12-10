@@ -47,13 +47,14 @@
         {% if destination.comment_set.count > 0 %}
             {% for comment in destination.comment_set.all %}
                 <div class="all-comment">
-                    <p>{{ destination.current_user.user.userprofile.user.username }}: {{ comment.text }}</p>
+                    <p>{{ comment.current_user.user.username }}: {{ comment.text }}</p>
                 </div>
             {% endfor %}
 
         {% else %}
             <h3>There are no comments for this destination. </h3>
         {% endif %}
+
 
 
         <form method="post" action="{% url 'description and comment' destination.pk %}">

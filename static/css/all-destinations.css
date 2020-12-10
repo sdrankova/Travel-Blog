@@ -11,3 +11,7 @@
 .relatefLeft, .relatedRight{
     flex: 1;
 }
+
+.btn_for_superuser {
+    font-size: 20px;
+}
