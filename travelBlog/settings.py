@@ -25,7 +25,11 @@ SECRET_KEY = 'j^t(3e*8txqcli*itl4)52wik@lz@^9^-^41)5f*f*br7_z6m6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'https://git.heroku.com/travel-blogg.git',
+]
 
 
 # Application definition
