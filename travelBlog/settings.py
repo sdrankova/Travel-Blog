@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'https://git.heroku.com/travel-blogg.git',
+    'travel-blogg.herokuapp.com',
 ]
 
 
