@@ -7,6 +7,7 @@
 {% block site_content %}
     <div class="text">
         <h2>Hello, {{ profile_user.username }}</h2>
+        <br>
             {% if profile.profile_picture %}
                 <img class="profile-picture" src="{{ profile.profile_picture.url }}" alt="{{ user.username }} picture">
             {% else %}
@@ -19,14 +20,14 @@
             {% csrf_token %}
             <button class="btn">Upload</button>
         </form>
+            </div>
 
         {% if destinations %}
-            <p>Your destinations:</p>
-            </div>
+            <p class="style-p">Your destinations:</p>
             <div class="mainContent">
             {% for dest in destinations %}
                 <div class="relatedChild">
-                    <img class="image" src="{{ dest.image.url }}" alt="Image of {{ dest.title }}">
+                    <img src="{{ dest.image.url }}" alt="Image of {{ dest.title }}">
                     <a class="url_title" href="{% url 'description and comment' dest.pk %}">{{ dest.title }}</a>
 
                 </div>

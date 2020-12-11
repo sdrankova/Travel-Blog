@@ -1,14 +1,11 @@
 .imageSection {
     display: block;
-}
-
-.imageSectionWrapper {
     width: 90%;
     margin: auto;
-    display: block;
-    height: 500px;
     position: relative;
 }
+
+
 
 
 .imageSectionWrapper h1 {

@@ -1,15 +1,33 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
-from destinations.forms import CommentForm, EditCreateForm
+from destinations.forms import CommentForm, EditCreateForm, FilterForm
 from destinations.models import Destination, Like, Comment
 
 
+def extract_filter_values(params):
+    order = params['order'] if 'order' in params else FilterForm.ORDER_ASC
+    text = params['text'] if 'text' in params else ''
+    users = params['users'] if 'users' in params else ''
+
+    return {
+        'order': order,
+        'text': text,
+        'users': users,
+    }
+
+
 def all_destinations(request):
+    params = extract_filter_values(request.GET)
+    order_by = 'title' if params['order'] == FilterForm.ORDER_ASC else '-title'
+    destination = Destination.objects.filter(title__icontains=params['text']).order_by(order_by)
+
     context = {
-        'destinations': Destination.objects.all(),
+        'destinations': destination,
+        'filter_form': FilterForm(initial=params),
     }
     return render(request, 'destinations/all-destinations.html', context)
+
 
 @login_required
 def description_and_comment_destination(request, pk):
@@ -39,6 +57,7 @@ def description_and_comment_destination(request, pk):
         }
         return render(request, 'destinations/description-destination.html', context)
 
+
 @login_required
 def like_destination(request, pk):
     like = Like.objects.filter(current_user_id=request.user.userprofile.id, destination_id=pk).first()
@@ -50,6 +69,7 @@ def like_destination(request, pk):
         like.destination = destination
         like.save()
     return redirect('description and comment', pk)
+
 
 @login_required
 def edit_destination(request, pk):
@@ -82,6 +102,7 @@ def edit_destination(request, pk):
         }
 
         return render(request, 'destinations/edit.html', context)
+
 
 @login_required
 def delete(request, pk):

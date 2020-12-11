@@ -1,32 +1,16 @@
 .imageSection {
-    display: block;
-}
-
-.imageSectionWrapper {
     width: 90%;
-    margin: auto;
-    display: block;
-    height: 500px;
-    position: relative;
 }
 
 
-.imageSectionWrapper h1 {
-    color: white;
-    width: 680px;
-    text-align: center;
-    padding: 0.25em;
-    margin: 0 0 20px -60px;
-}
 
 
 .comment-form {
     width: 85%;
-    max-width: 600px;
+    max-width: 700px;
     background: #f1f1f1;
     position: absolute;
     padding: 30px 40px;
-    box-sizing: border-box;
     border-radius: 8px;
     text-align: center;
     box-shadow: 0 0 20px #000000b3;
@@ -53,7 +37,5 @@
     color: #2b5f86;
     font-style: italic;
 }
-
-
 
 
