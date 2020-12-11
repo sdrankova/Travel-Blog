@@ -1,0 +1,102 @@
+
+
+.include-pic {
+    background-image: url('/static/photo.png');
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+
+}
+
+
+.container {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14);
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+
+nav ul li:hover {
+    background: #0d4d8a;
+}
+
+.logo {
+    width: 160px;
+    cursor: pointer;
+}
+
+.nav {
+    flex: 1;
+    padding-left: 60px;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(5, 51, 92);
+}
+
+.content h1 {
+    font-size: 60px;
+    font-weight: 100;
+    margin-top: 24px;
+    margin-bottom: 15px;
+    color: #232d;
+}
+
+.content p {
+    font-size: 20px;
+    color: #6a7199;
+}
+
+.content a {
+    text-decoration: none;
+}
+
+.content {
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #72f0d4, #2c8ce6);
+    border-radius: 6px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 3px 8px 22px rgba(9, 71, 187, 0.15);
+}
+
+.rotate-text {
+    transform: rotate(-270deg);
+    position: fixed;
+    right: -80px;
+    bottom: 180px;
+    text-transform: uppercase;
+}
+
+.rotate-text a {
+    text-decoration: none;
+    color: rgba(7, 54, 82, 0.867);
+    padding-right: 20px;
+    font-size: 20px;
+}
