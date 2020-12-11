@@ -4,6 +4,10 @@
     <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
+{% block site_title %}
+    Hello, {{ profile_user.username }}
+{% endblock %}
+
 {% block site_content %}
     <div class="text">
         <h2>Hello, {{ profile_user.username }}</h2>

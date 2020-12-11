@@ -1,8 +1,14 @@
 {% extends 'shared/base.html' %}
 {% load static %}
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
 {% endblock %}
+
+{% block site_title %}
+    Sign in
+{% endblock %}
+
 {% block site_content %}
     <form method="post" action="{% url 'login' %}">
         <h2>Sign in</h2>
