@@ -73,9 +73,10 @@ def like_destination(request, pk):
 
 @login_required
 def edit_destination(request, pk):
-    destination = Destination.objects.get(pk=pk, current_user=request.user.userprofile)
+    destination = Destination.objects.get(pk=pk)
     if destination.current_user.user != request.user:
         pass
+
     if request.method == 'GET':
         form = EditCreateForm(instance=destination)
 

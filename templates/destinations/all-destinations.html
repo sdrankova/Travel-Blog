@@ -4,7 +4,9 @@
     <link rel="stylesheet" href="{% static 'css/all-destinations.css' %}">
 {% endblock %}
 
-
+{% block site_title %}
+    All Destinations
+{% endblock %}
 {% block site_content %}
     <form method="get" action="{% url 'destinations' %}">
         {{ filter_form }}
@@ -33,8 +35,8 @@
                             {% if user.is_superuser %}
                                 <br>
                                 <div class="btn_for_superuser">
-                                    <a class="edit-green" href="{% url 'edit' dest.pk %}">Edit</a>
-                                    <a class="delete-red" href="{% url 'delete' dest.pk %}">Delete</a>
+                                    <a href="{% url 'edit' dest.pk %}">Edit</a>
+                                    <a href="{% url 'delete' dest.pk %}">Delete</a>
                                 </div>
                             {% endif %}
                         </div>

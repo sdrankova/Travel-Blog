@@ -3,14 +3,14 @@ from django.contrib import admin
 from destinations.models import Destination, Like, Comment
 
 
-class LikeInLineAdmin(admin.TabularInline):
-    model = Like
+class CommentInLineAdmin(admin.TabularInline):
+    model = Comment
 
 class DestinationAdmin(admin.ModelAdmin):
     list_display = ('id', 'destination')
     list_filter = ('destination',)
     inlines = [
-        LikeInLineAdmin,
+        CommentInLineAdmin,
     ]
 
 

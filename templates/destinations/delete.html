@@ -1,5 +1,7 @@
 {% extends 'shared/base.html' %}
-
+{% block site_title %}
+    Delete Destinations
+{% endblock %}
 {% block site_content %}
     <h1>Are you sure you want to delete {{ destination.title }}</h1>
     <form method="post" action="{% url 'delete' destination.pk %}">

@@ -4,6 +4,9 @@
     <link rel="stylesheet" href="{% static 'css/description-destination.css' %}">
 {% endblock %}
 
+{% block site_title %}
+    {{ destination.title }}
+{% endblock %}
 
 {% block site_content %}
     <div class="imageSection">
