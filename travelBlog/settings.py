@@ -148,4 +148,3 @@ MEDIA_ROOT = join(BASE_DIR, 'media')
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
-django_heroku.settings(locals())
