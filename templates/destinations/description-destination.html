@@ -31,14 +31,11 @@
     </div>
     <br>
     {% if already_liked %}
-        <p>You already liked this destination. Do you want to see other visited destinations from
-            <a href="{% url 'profile' destination.current_user.user_id %}">
-                {{ destination.current_user.user.username }}</a></p>
-        <a class="btn" href="{% url 'like' destination.id %}">Unlike</a>
-
-    {% else %}
-        <a class="btn" href="{% url 'like' destination.id %}">Like</a>
-    {% endif %}
+    <p>You already liked this destination.
+            <a class="btn" href="{% url 'like' destination.id %}">Unlike</a>
+        {% else %}
+            <a class="btn" href="{% url 'like' destination.id %}">Like</a>
+        {% endif %}
     <p>Likes: {{ destination.like_set.count }}</p>
 
     <br>

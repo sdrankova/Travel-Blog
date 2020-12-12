@@ -61,6 +61,7 @@ def profile(request, pk=None):
             return redirect('current profile')
         return redirect('current profile')
 
+
 def signup(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)

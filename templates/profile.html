@@ -9,37 +9,38 @@
 {% endblock %}
 
 {% block site_content %}
-    <div class="text">
-        <h2>Hello, {{ profile_user.username }}</h2>
-        <br>
+        <div class="text">
+            <h2>Hello, {{ profile_user.username }}</h2>
+            <br>
             {% if profile.profile_picture %}
-                <img class="profile-picture" src="{{ profile.profile_picture.url }}" alt="{{ user.username }} picture">
+                <img class="profile-picture" src="{{ profile.profile_picture.url }}"
+                     alt="{{ user.username }} picture">
             {% else %}
                 <img class="profile-picture" src="https://afribary.com/authors/anonymous-user/photo"
                      alt="User image">
             {% endif %}
 
-        <form action="{% url 'current profile' %}" method="post" enctype="multipart/form-data">
-            {{ form }}
-            {% csrf_token %}
-            <button class="btn">Upload</button>
-        </form>
+            <form action="{% url 'current profile' %}" method="post" enctype="multipart/form-data">
+                {{ form }}
+                {% csrf_token %}
+                <button class="btn">Upload</button>
+            </form>
+        </div>
+
+    {% if destinations %}
+        <p class="style-p">Your destinations:</p>
+        <div class="mainContent">
+        {% for dest in destinations %}
+            <div class="relatedChild">
+                <img src="{{ dest.image.url }}" alt="Image of {{ dest.title }}">
+                <a class="url_title" href="{% url 'description and comment' dest.pk %}">{{ dest.title }}</a>
+
             </div>
 
-        {% if destinations %}
-            <p class="style-p">Your destinations:</p>
-            <div class="mainContent">
-            {% for dest in destinations %}
-                <div class="relatedChild">
-                    <img src="{{ dest.image.url }}" alt="Image of {{ dest.title }}">
-                    <a class="url_title" href="{% url 'description and comment' dest.pk %}">{{ dest.title }}</a>
 
-                </div>
-
-
-            {% endfor %}
-        {% else %}
-            <p>Do you want to <a href="{% url 'add' %}">ADD</a> some visited destinations?</p>
-        {% endif %}
-        </div>
+        {% endfor %}
+    {% else %}
+        <p>Do you want to <a href="{% url 'add' %}">ADD</a> some visited destinations?</p>
+    {% endif %}
+</div>
 {% endblock %}
